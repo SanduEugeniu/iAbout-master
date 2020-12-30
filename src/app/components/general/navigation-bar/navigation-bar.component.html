@@ -1,0 +1,109 @@
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="animals"> <mat-icon>menu</mat-icon></button>
+  <mat-menu #animals="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="PiataCripto">Piata-Cripto</button>
+    <button mat-menu-item [matMenuTriggerFor]="Programare">Programare</button>
+    <button mat-menu-item [matMenuTriggerFor]="Noutati">Noutati</button>
+  </mat-menu>
+
+  <mat-menu #PiataCripto="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="fish">Fishes</button>
+    <button mat-menu-item [matMenuTriggerFor]="amphibians">Amphibians</button>
+    <button mat-menu-item [matMenuTriggerFor]="reptiles">Reptiles</button>
+    <button mat-menu-item>Birds</button>
+    <button mat-menu-item>Mammals</button>
+  </mat-menu>
+
+  <mat-menu #Programare="matMenu">
+    <button mat-menu-item>Insects</button>
+    <button mat-menu-item>Molluscs</button>
+    <button mat-menu-item>Crustaceans</button>
+    <button mat-menu-item>Corals</button>
+    <button mat-menu-item>Arachnids</button>
+    <button mat-menu-item>Velvet worms</button>
+    <button mat-menu-item>Horseshoe crabs</button>
+  </mat-menu>
+
+  <mat-menu #fish="matMenu">
+    <button mat-menu-item>Baikal oilfish</button>
+    <button mat-menu-item>Bala shark</button>
+    <button mat-menu-item>Ballan wrasse</button>
+    <button mat-menu-item>Bamboo shark</button>
+    <button mat-menu-item>Banded killifish</button>
+  </mat-menu>
+
+  <mat-menu #amphibians="matMenu">
+    <button mat-menu-item>Sonoran desert toad</button>
+    <button mat-menu-item>Western toad</button>
+    <button mat-menu-item>Arroyo toad</button>
+    <button mat-menu-item>Yosemite toad</button>
+  </mat-menu>
+
+  <mat-menu #reptiles="matMenu">
+    <button mat-menu-item>Banded Day Gecko</button>
+    <button mat-menu-item>Banded Gila Monster</button>
+    <button mat-menu-item>Black Tree Monitor</button>
+    <button mat-menu-item>Blue Spiny Lizard</button>
+    <button mat-menu-item disabled>Velociraptor</button>
+  </mat-menu>
+
+  <mat-menu #Noutati="matMenu">
+    <button mat-menu-item>Banded Day Gecko</button>
+    <button mat-menu-item>Banded Gila Monster</button>
+    <button mat-menu-item>Black Tree Monitor</button>
+    <button mat-menu-item>Blue Spiny Lizard</button>
+    <button mat-menu-item disabled>Velociraptor</button>
+  </mat-menu>
+
+
+  <span>
+  All areas
+  </span>
+  <span class="example-spacer"></span>
+
+  <a [routerLink]="['/']" > <h1>iAbout</h1>
+  </a>
+  <span class="example-spacer"></span>
+<div *ngIf="!auth">
+  <button mat-button (click)="registrationAccount()" >
+    <h1>Registration <span class="material-icons">
+    person_add
+    </span> </h1>
+  </button>
+
+  <button  mat-button (click)="loginAccount()" >
+    <h1>Login <span class="material-icons">
+    login
+    </span></h1>
+  </button>
+
+
+  </div>
+
+
+  <div *ngIf="auth"><span class="example-spacer"></span>
+    <button mat-button  [matMenuTriggerFor]="menu"><h1><span class="material-icons">
+account_circle
+</span>  {{curentUser.name}}</h1></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="goDashboard()"><span class="material-icons">
+dashboard
+</span> My dashboard </button>
+
+      <button mat-menu-item (click)="goMyPosts()"> <span class="material-icons">
+dynamic_feed
+</span> My Posts</button>
+      <button mat-menu-item (click)="goMySettings()"><span class="material-icons">
+settings_applications
+</span> My Settings</button>
+
+      <button mat-button (click)="logautAccount()" ><span class="material-icons">
+    logout
+    </span>logout</button>
+
+
+
+    </mat-menu>
+  </div>
+
+</mat-toolbar>
