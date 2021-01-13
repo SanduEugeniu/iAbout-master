@@ -10,7 +10,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MyResultsComponent} from './pagesForDashboard/firstGrupPages/my-dashboard/my-results.component';
 import {MyPostsComponent} from './pagesForDashboard/firstGrupPages/my-posts/my-posts.component';
-import {MySettingsComponent} from './pagesForDashboard/firstGrupPages/my-settings/my-settings.component';
 import {MyProfitComponent} from './pagesForDashboard/firstGrupPages/my-profit/my-profit.component';
 import {MyMessagesComponent} from './pagesForDashboard/firstGrupPages/my-messages/my-messages.component';
 import {RouterModule} from '@angular/router';
@@ -20,7 +19,8 @@ import { EnterMoneyComponent } from './pagesForDashboard/secondGrupPages/enter-m
 import { TermsAndConditionsComponent } from './pagesForDashboard/thirdGrupPages/terms-and-conditions/terms-and-conditions.component';
 import { CustomerSupportComponent } from './pagesForDashboard/thirdGrupPages/customer-support/customer-support.component';
 import { HelpComponent } from './pagesForDashboard/thirdGrupPages/help/help.component';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { HelpComponent } from './pagesForDashboard/thirdGrupPages/help/help.comp
     HorizontalNavigationBarComponent,
     MyResultsComponent,
     MyPostsComponent,
-    MySettingsComponent,
+    // MySettingsComponent,
     MyProfitComponent,
     MyMessagesComponent,
     INeedAdvertisingComponent,
@@ -43,7 +43,9 @@ import { HelpComponent } from './pagesForDashboard/thirdGrupPages/help/help.comp
     MatGridListModule,
     MatListModule,
     MatButtonModule,
-    RouterModule
+    RouterModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardModule { }

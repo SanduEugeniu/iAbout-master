@@ -1,3 +1,13 @@
 .mat-tab-group {
+  width: 90%;
+  margin-left: 5%;
   margin-bottom: 48px;
+  margin-top: 1%;
+  margin-block-end: 1%;
+}
+.c1{
+  border: 10px solid;
+  color: #cccccc;
+  width: 89%;
+  margin-left: 5%;
 }

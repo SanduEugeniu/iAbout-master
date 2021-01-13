@@ -3,7 +3,9 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet'
 import {Post} from './_model/post.model';
 import {PostService} from './_service/post.service';
 import {Router} from '@angular/router';
-
+import { saveAs } from 'file-saver';
+import {Photo} from "../../common/_interface/photo.interface";
+import {observable, Observable} from "rxjs";
 
 @Component({
   selector: 'app-add-post',
@@ -17,25 +19,22 @@ export class AddPostComponent implements OnInit {
   selected: any;
   title: any;
   content: any;
-
-
+   imageSrca: any = [];
   private bottomSheet: MatBottomSheet;
+
   constructor(bottomSheet: MatBottomSheet,
               private postService: PostService,
               private router: Router
   ) {
     this.bottomSheet = bottomSheet;
   }
-
   ngOnInit(): any {
-  }
-  openBottomSheet(): void {
-    this.bottomSheet.open(BottomComponent);
   }
 
   finishAddPost(): any {
-    this.title = ( document.getElementById('title') as HTMLInputElement).value;
-    this.content = ( document.getElementById('content') as HTMLInputElement).value;
+
+    this.title = (document.getElementById('title') as HTMLInputElement).value;
+    this.content = (document.getElementById('content') as HTMLInputElement).value;
     const email = JSON.parse(localStorage.getItem('currentUser')).data.user.email;
     const fiirstName = JSON.parse(localStorage.getItem('currentUser')).data.user.name;
     const lasstName = JSON.parse(localStorage.getItem('currentUser')).data.user.surname;
@@ -45,20 +44,53 @@ export class AddPostComponent implements OnInit {
       firstName: fiirstName,
       lastName: lasstName,
       title: this.title,
-      category: this.selected
+      category: this.selected,
+      photos: {
+}
     };
-    this.postService.addPost(newPost) .pipe()
+    this.postService.addPost(newPost).pipe()
       .subscribe(
         data => {
           if (data.success) {
             this.router.navigate(['/']);
             console.log(newPost);
-          }else {
+          } else {
             console.log(newPost);
             this.error = data.data.message;
             this.loading = false;
           }
         });
+  }
+  handleInputChange(e): any {
+    let i;
+    const file = e.dataTransfer ? e.dataTransfer.files : e.target.files;
+
+    for (i = 0; i < file.length; i++ ) {
+      // tslint:disable-next-line:no-shadowed-variable
+      const file = e.dataTransfer ? e.dataTransfer.files[i] : e.target.files[i];
+
+      const pattern = /image-*/;
+      const reader = new FileReader();
+      if (!file.type.match(pattern)) {
+        alert('invalid format');
+        return;
+      }
+      reader.onload = _handleReaderLoaded.bind(this);
+      reader.readAsDataURL(file);
+    }
+    // tslint:disable-next-line:no-shadowed-variable
+    function _handleReaderLoaded(e): any
+    {
+      const reader = e.target;
+      const content = reader.result;
+      this.imageSrca = this.imageSrca.concat({content});
+      this.imageSrca.splice(5);
+
+    }
+  }
+
+  deletSelectIMG(id): void {
+    this.imageSrca.splice(id, 1);
   }
 }
 
@@ -77,4 +109,3 @@ export class BottomComponent {
   }
 
 }
-

@@ -31,6 +31,8 @@ import {AddPostComponent, BottomComponent} from './add-post/add-post.component';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 @NgModule({
   declarations: [
     Tabs1Component,
@@ -69,7 +71,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CommonModule,
     MatOptionModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatGridListModule
 
 
   ],

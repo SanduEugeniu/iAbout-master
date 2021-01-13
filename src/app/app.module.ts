@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ComponentsModule} from './components/components.module';
 import {SimplePagesModule} from './simple-pages/simple-pages.module';
 import {DashboardModule} from './dashboard/dashboard.module';
+import { PostComponent } from './post/post.component';
+import {PostModule} from './post/post.module';
 
 
 @NgModule({
@@ -14,12 +16,13 @@ import {DashboardModule} from './dashboard/dashboard.module';
     AppComponent,
   ],
   imports: [
+    PostModule,
     DashboardModule,
     SimplePagesModule,
     ComponentsModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

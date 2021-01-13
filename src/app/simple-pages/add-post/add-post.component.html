@@ -26,9 +26,36 @@
       <textarea name="content" id="content" class="customClassText"  rows="10" matInput placeholder="Ce urmeaza cu bitcon, care va fi pretul la sfarsitul anului??!"></textarea>
     </mat-form-field>
   <hr>
-  <p>if you want you can add a picture</p>
-  <button class="example-full-width" mat-raised-button (click)="openBottomSheet()">Open file</button>
-  <hr>
-  <button mat-raised-button class="colorB" (click)="finishAddPost()" >Add Post</button>
+  <p>Select picture maxim 5 picture</p>
+  <div class="image-upload">
 
+    <div >
+      <mat-grid-list class="colorGrid" cols="6" rowHeight="1:1">
+        <mat-grid-tile  class="colorr" *ngFor="let content of imageSrca">
+          <mat-card class="mat-card1 example-card1">
+
+            <img  class="imgg" [src]="content.content" style="width:100px;height:100px"/>
+            <mat-card-content>
+              <button class="middle1" mat-raised-button color="primary" (click)="deletSelectIMG(imageSrca.indexOf(content))">Delete</button>
+            </mat-card-content>
+
+          </mat-card>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="pointerC">
+          <div class="upload-btn-wrapper pointerC">
+            <button class="button1 upload-btn-wrapper"><span class="sizeC material-icons">
+get_app
+</span></button>
+            <input type="file" name="imageUrl" accept="image/*" multiple (change)="handleInputChange($event)"  />
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+
+  <hr>
+  <p>select Themes </p>
+
+  <button mat-raised-button class="colorB " (click)="finishAddPost()" >Add Post</button>
 </mat-card>

@@ -60,6 +60,8 @@ export class LoginPageComponent implements OnInit {
       .subscribe(
         data => {
           if (data.success) {
+            console.log(data);
+
             this.router.navigate([this.returnUrl]);
           }else {
             console.log(data);

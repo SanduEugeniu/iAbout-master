@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
 import {AuthenticationService} from '../../../simple-pages/login-page/_service/authentication.service';
 import {CurentUserService} from "../../../common/_services/curent-user.service";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-navigation-bar',
@@ -11,9 +12,11 @@ import {CurentUserService} from "../../../common/_services/curent-user.service";
 export class NavigationBarComponent implements OnInit {
   auth = false;
   curentUser: any;
+  imageSource: any;
   constructor(private router: Router,
               private authS: AuthenticationService,
-              private curentUserService: CurentUserService
+              private curentUserService: CurentUserService,
+              private sanitizer: DomSanitizer
   ) {
   }
 
@@ -45,6 +48,7 @@ export class NavigationBarComponent implements OnInit {
    }else {
      this.auth = v.success;
      this.curentUser = v.data.user;
+     // this.imageSource = this.sanitizer.bypassSecurityTrustResourceUrl('data:image/png;base64,' + v.data.user.photos.profilePic.tags[0]);
 
    }
  });
